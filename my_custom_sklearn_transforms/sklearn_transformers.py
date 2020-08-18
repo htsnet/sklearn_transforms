@@ -81,7 +81,7 @@ class MediaGeral(BaseEstimator, TransformerMixin):
         return data     
     
     
-#Altera nota quando está NaN ou 0
+#Altera nota quando está NaN ou 0 e limita em 10
 class NotaUnica(BaseEstimator, TransformerMixin):
     def __init__(self, qual):
         self.qual = qual
