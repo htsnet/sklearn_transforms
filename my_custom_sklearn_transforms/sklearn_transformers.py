@@ -136,27 +136,18 @@ class TrocaTipo(BaseEstimator, TransformerMixin):
     
 #executa o SMOTE
 class ExecutaSmote(BaseEstimator, TransformerMixin):
+    def __init__(self, features, target):
+        self.features = features
+        self.target = target
+    
     def fit(self, X, y=None):
         return self
     
-    def transform(self, X):
-        # Definição das colunas que serão features (nota-se que a coluna NOME não está presente)
-        features = [
-            'REPROVACOES_DE', 'REPROVACOES_EM', "REPROVACOES_MF", "REPROVACOES_GO",
-            "NOTA_DE", "NOTA_EM", "NOTA_MF", "NOTA_GO",
-            "INGLES", "TAREFAS_ONLINE", 'H_AULA_PRES', 'FALTAS'
-        ]
-        # Definição da variável-alvo
-        target = ["PERFIL"]
-        data = X.copy()
-        
+    def transform(self, X, y):
         # Preparação dos argumentos para os métodos da biblioteca ``scikit-learn``
-        X_inicial = X[features]
-        y_inicial = X[target]
-        
-        X_apoio, y = SMOTE().fit_sample(X_inicial, y_inicial.values.ravel())
-        y_apoio = pd.DataFrame(y, columns=target)
-        X_saida = pd.DataFrame(X_apoio, columns=X_inicial.columns)
+        X_apoio, y = SMOTE().fit_sample(X, y.values.ravel())
+        y_apoio = pd.DataFrame(y, columns=self.target)
+        X_saida = pd.DataFrame(X_apoio, columns=self.features)
         data = pd.merge(X_saida, y_apoio, left_index=True, right_index=True)
         
         # Retornamos um novo dataframe
