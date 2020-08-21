@@ -139,7 +139,7 @@ class ExecutaSmote(BaseEstimator, TransformerMixin):
     def fit(self, X, y=None):
         return self
     
-    def transform(self, X):
+    def transform(self, X, y):
         #separa features do target
         print(X.head())
         print(y.head())
