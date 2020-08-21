@@ -145,8 +145,8 @@ class ExecutaSmote(BaseEstimator, TransformerMixin):
     
     def transform(self, X, y=None):
         #separa features do target
-        X_pipe = self.features
-        y_pipe = self.target
+        X_pipe = X[self.features]
+        y_pipe = X[self.target]
         
         # Preparação dos argumentos para os métodos da biblioteca ``scikit-learn``
         X_apoio, y_apoio = SMOTE().fit_sample(X_pipe, y_pipe)
