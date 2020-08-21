@@ -140,17 +140,18 @@ class ExecutaSmote(BaseEstimator, TransformerMixin):
         return self
     
     def transform(self, X, y):
-        #separa features do target
         print(X.head())
         print(y.head())
         
+        return self
+        
         # Preparação dos argumentos para os métodos da biblioteca ``scikit-learn``
-        X_apoio, y_apoio = SMOTE().fit_sample(X, y)
+#         X_apoio, y_apoio = SMOTE().fit_sample(X, y)
         
-        print(X.apoio())
-        print(y.apoio())
+#         print(X.apoio())
+#         print(y.apoio())
         
-        #data = pd.merge(X_apoio, y_apoio, left_index=True, right_index=True)
+#         #data = pd.merge(X_apoio, y_apoio, left_index=True, right_index=True)
         
-        # Retornamos um novo dataframe
-        return X.apoio, y.apoio
+#         # Retornamos um novo dataframe
+#         return X.apoio, y.apoio
