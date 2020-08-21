@@ -136,16 +136,13 @@ class TrocaTipo(BaseEstimator, TransformerMixin):
     
 #executa o SMOTE
 class ExecutaSmote(BaseEstimator, TransformerMixin):
-    def __init__(self, features, target):
-        self.features = features
-        self.target = target
+    def __init__(self):
     
     def fit(self, X, y=None):
         return self
     
-    def transform(self, X, y=None):
+    def transform(self, X):
         #separa features do target
-        print(self.features)
         print(X.head())
         return X
 #         X_pipe = X[self.features]
