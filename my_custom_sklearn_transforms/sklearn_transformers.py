@@ -150,7 +150,7 @@ class ExecutaSmote(BaseEstimator, TransformerMixin):
         print(X.apoio())
         print(y.apoio())
         
-        data = pd.merge(X_apoio, y_apoio, left_index=True, right_index=True)
+        #data = pd.merge(X_apoio, y_apoio, left_index=True, right_index=True)
         
         # Retornamos um novo dataframe
-        return data
+        return X.apoio, y.apoio
