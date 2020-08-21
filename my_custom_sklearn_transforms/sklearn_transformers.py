@@ -136,7 +136,7 @@ class TrocaTipo(BaseEstimator, TransformerMixin):
     
 #executa o SMOTE
 class ExecutaSmote(BaseEstimator, TransformerMixin):
-    def fit(self, X, y=None):
+    def fit(self, X, y):
         return self
     
     def transform(self, X, y):
