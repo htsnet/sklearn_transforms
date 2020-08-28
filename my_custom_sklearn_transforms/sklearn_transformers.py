@@ -105,9 +105,13 @@ class NotaUnica(BaseEstimator, TransformerMixin):
 #cria uma coluna com TRUE para os TUDO ZERO e FALSE para os demais    
 class Dificuldade(BaseEstimator, TransformerMixin):
     def fit(self, X, y=None):
+        print("DIFICULDADE")
+        print(len(X))
+        print(len(y))
         return self
     
     def transform(self, X):
+        print('dificuldade', X.head())
         # Primeiro realizamos a cópia do dataframe 'X' de entrada
         data = X.copy()
         #faz a criação da coluna "DIFICULDADE" 
@@ -136,22 +140,17 @@ class TrocaTipo(BaseEstimator, TransformerMixin):
     
 #executa o SMOTE
 class ExecutaSmote(BaseEstimator, TransformerMixin):
-    def fit(self, X, y):
-        return self
-    
-    def transform(self, X, y):
-        print(X.head())
-        print(y.head())
+    def fit(self, X, y=None):
+        print(self)
+        X_apoio = X.copy()
+        y_apoio = y.copy()
         
-        return self
-        
-        # Preparação dos argumentos para os métodos da biblioteca ``scikit-learn``
-#         X_apoio, y_apoio = SMOTE().fit_sample(X, y)
-        
-#         print(X.apoio())
-#         print(y.apoio())
-        
-#         #data = pd.merge(X_apoio, y_apoio, left_index=True, right_index=True)
-        
-#         # Retornamos um novo dataframe
-#         return X.apoio, y.apoio
+        X, y = SMOTE().fit_sample(X_apoio, y_apoio)
+#         print("DEPOIS*****************")
+#         print(len(X))
+#         print(len(y))
+        retorno = (X, y)
+        return retorno
+
+    def transform(self, X):
+        return self   
